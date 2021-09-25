@@ -12,6 +12,7 @@ app.use(
   cors({
     methods: "GET, POST",
     allowedHeaders: "*",
+    origin: "*",
   })
 );
 app.use(bodyParser.json());
