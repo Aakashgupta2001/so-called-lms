@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "../../store/auth-context";
 import classes from "./Navigation.module.css";
 import axios from "axios";
@@ -7,7 +7,7 @@ const Navigation = (props) => {
   const ctx = useContext(AuthContext);
   const token = localStorage.getItem("Authorization");
   console.log(token);
-  let user = {};
+  const [user, setUser] = useState({});
   useEffect(() => {
     console.log("navigation is loaded");
     axios
@@ -18,12 +18,14 @@ const Navigation = (props) => {
       })
       .then((response) => {
         console.log("user = ", response);
+        setUser(response.data);
       });
   }, []);
 
   return (
     <nav className={classes.nav}>
       <ul>
+        {ctx.isLoggedIn && <li> Hello, {user.name}</li>}
         {ctx.isLoggedIn && (
           <li>
             <button onClick={ctx.onLogout}>Logout</button>
