@@ -1,9 +1,10 @@
-
-
+import Sidebar from "./Dashboard/Sidebar";
 function App() {
   return (
+   
     <>
-      <h1>hello</h1>
+     <Sidebar/>
+      
     </>
   );
 }
