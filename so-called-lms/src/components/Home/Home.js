@@ -6,7 +6,7 @@ import classes from "./Home.module.css";
 import AuthContext from "../../store/auth-context";
 import Sidebar from "../../Dashboard/Sidebar";
 
-import Table from '../table/Table'
+import Table from "../Table/Table";
 
 const Home = (props) => {
   const authCtx = useContext(AuthContext);

@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import AuthContext from "./store/auth-context";
-import Login from "./Components/login/Login";
-import Home from "./Components/home/Home";
-import MainHeader from "./Components/mainHeader/MainHeader";
+import Login from "./components/Login/Login";
+import Home from "./components/Home/Home";
+import MainHeader from "./components/MainHeader/MainHeader";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
@@ -10,10 +10,10 @@ function App() {
   return (
     <Router>
       <MainHeader />
-      <main>
-        {!ctx.isLoggedIn && <Login />}
-        {ctx.isLoggedIn && <Home />}
-      </main>
+      <Switch>
+        {!ctx.isLoggedIn && <Route path="/" exact component={Login} />}
+        {ctx.isLoggedIn && <Route path="/" component={Home} />}
+      </Switch>
     </Router>
   );
 }

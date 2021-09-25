@@ -24,6 +24,8 @@ const SignUp = () => {
         <option value="Batch 2">Batch 2</option>
         <option value="Batch 3">Batch 3</option>
       </select>
+
+      <button>Submit</button>
     </form>
   );
 };
