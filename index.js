@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
-
+require("./routes").default(app);
 dotenv.config();
 
 mongoose.connect(
