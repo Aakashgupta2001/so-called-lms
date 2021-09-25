@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useReducer, useContext, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useReducer,
+  useContext,
+  useRef,
+} from "react";
 
 import Card from "../UI/Card/Card";
 import Button from "../UI/Button/Button";
@@ -6,6 +12,9 @@ import AuthContext from "../../store/auth-context";
 import Input from "../UI/Input/Input";
 import classes from "./Login.module.css";
 import SignUp from "../SignUp/SignUp";
+import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 
 const emailReducer = (state, action) => {
   if (action.type === "USER_INPUT") {
@@ -33,6 +42,7 @@ const Login = (props) => {
   // const [enteredPassword, setEnteredPassword] = useState('');
   // const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
+  const [displaySignUp, setDisplaySignUp] = useState(false);
 
   const [emailState, dispatchEmail] = useReducer(emailReducer, {
     value: "",
@@ -47,14 +57,6 @@ const Login = (props) => {
 
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
-
-  useEffect(() => {
-    console.log("EFFECT RUNNING");
-
-    return () => {
-      console.log("EFFECT CLEANUP");
-    };
-  }, []);
 
   const { isValid: emailIsValid } = emailState;
   const { isValid: passwordIsValid } = passwordState;
@@ -108,20 +110,70 @@ const Login = (props) => {
     return <SignUp></SignUp>;
   };
 
+  const loginHandler = () => {
+    <Link to="/home"></Link>;
+  };
+
+  const formRenderController = (displaySignUp) => {
+    if (!displaySignUp) {
+      return (
+        <form onSubmit={submitHandler}>
+          <Input
+            ref={emailInputRef}
+            id="email"
+            label="E-Mail"
+            type="email"
+            isValid={emailIsValid}
+            value={emailState.value}
+            onChange={emailChangeHandler}
+            onBlur={validateEmailHandler}
+          />
+          <Input
+            ref={passwordInputRef}
+            id="password"
+            label="Password"
+            type="password"
+            isValid={passwordIsValid}
+            value={passwordState.value}
+            onChange={passwordChangeHandler}
+            onBlur={validatePasswordHandler}
+          />
+          <div className={classes.actions}>
+            <Button
+              type="submit"
+              className={classes.btn}
+              onClick={loginHandler}
+            >
+              Login
+            </Button>
+            {/* <Button type="button" className={classes.btn} onClick={signUpHandler}>
+            SignUP
+          </Button> */}
+          </div>
+        </form>
+      );
+    } else {
+      return <SignUp></SignUp>;
+    }
+  };
+
+  const displayCOntroller = () => {
+    console.log(displaySignUp);
+    setDisplaySignUp(!displaySignUp);
+  };
+
   return (
     <Card className={classes.login}>
-      <form onSubmit={submitHandler}>
-        <Input ref={emailInputRef} id="email" label="E-Mail" type="email" isValid={emailIsValid} value={emailState.value} onChange={emailChangeHandler} onBlur={validateEmailHandler} />
-        <Input ref={passwordInputRef} id="password" label="Password" type="password" isValid={passwordIsValid} value={passwordState.value} onChange={passwordChangeHandler} onBlur={validatePasswordHandler} />
-        <div className={classes.actions}>
-          <Button type="submit" className={classes.btn}>
-            Login
-          </Button>
-          <Button type="button" className={classes.btn} onClick={signUpHandler}>
-            SignUP
-          </Button>
-        </div>
-      </form>
+      {formRenderController(displaySignUp)}
+      {/* <Router>
+        <Switch>
+          <Route path="/signUp" component={SignUp} />
+          <a>
+            <Link to="/signUp">signUp</Link>
+          </a>
+        </Switch>
+      </Router> */}
+      <button onClick={displayCOntroller}>SignUP</button>
     </Card>
   );
 };
