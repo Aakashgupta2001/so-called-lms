@@ -5,24 +5,11 @@ const bodyParser = require("body-parser");
 
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+
+app.use(cors());
+
 require("./routes").default(app);
 dotenv.config();
-
-app.use(
-  cors({
-    methods: "*",
-    allowedHeaders: "*",
-    origin: "*",
-  })
-);
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
-  res.header("Access-Control-Allow-Headers", "*");
-  next();
-});
-app.use(bodyParser.json());
-
-app.use(express.json());
 
 mongoose.connect(
   process.env.MONGO_URL,
@@ -33,8 +20,6 @@ mongoose.connect(
     console.log("connected to db");
   }
 );
-
-app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("<h1>hello</h1>");
