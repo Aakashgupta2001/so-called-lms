@@ -163,9 +163,10 @@ const Login = (props) => {
   };
 
   return (
-    <Card className={classes.login}>
-      {formRenderController(displaySignUp)}
-      {/* <Router>
+    <div className="cardPos">
+      <Card className={classes.login}>
+        {formRenderController(displaySignUp)}
+        {/* <Router>
         <Switch>
           <Route path="/signUp" component={SignUp} />
           <a>
@@ -173,8 +174,9 @@ const Login = (props) => {
           </a>
         </Switch>
       </Router> */}
-      <button onClick={displayCOntroller}>SignUP</button>
-    </Card>
+        <button onClick={displayCOntroller}>Click Here</button>
+      </Card>
+    </div>
   );
 };
 
