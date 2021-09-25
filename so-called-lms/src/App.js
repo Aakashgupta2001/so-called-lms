@@ -1,11 +1,9 @@
-
+import React from "react";
+import Login from "./Components/Login";
+import Table from "./Components/Table/Table";
 
 function App() {
-  return (
-    <>
-      <h1>hello</h1>
-    </>
-  );
+  return <Table></Table>;
 }
 
 export default App;
