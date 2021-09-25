@@ -2,6 +2,25 @@ const authService = require("../service/auth");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
+exports.verifyToken = async (req, res, next) => {
+  token = req.headers.authorization;
+  //if no token found, return response (without going to the next middelware)
+  if (!token) {
+    return res.send("Unauthorzied");
+  }
+  try {
+    if (token.includes("Bearer")) {
+      token = token.substr(7);
+    }
+    //if can verify the token, set req.user and pass to next middleware
+    const decoded = jwt.verify(token, process.env.ACCESS_SECRET_TOKEN);
+    req.user = decoded;
+    return res.status(202).send("correct Token");
+  } catch (err) {
+    return res.send({ error: err });
+  }
+};
+
 exports.signup = async (req, res, next) => {
   try {
     let body = req.body;
@@ -33,7 +52,7 @@ exports.login = async (req, res, next) => {
     }
     const result = await bcrypt.compare(req.body.password, user.password);
     if (!result) {
-      return res.send("Incorrect password");
+      return res.status(400).send("Incorrect password");
     }
     let token = await jwt.sign({ name: user.name, role: user.roles, _id: user._id, email: user.email }, process.env.ACCESS_SECRET_TOKEN, {
       expiresIn: "24h",

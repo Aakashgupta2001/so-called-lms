@@ -8,5 +8,6 @@ router.route("/signup").post(authController.signup);
 router.route("/login").post(authController.login);
 
 router.route("/dashboard").post(auth.verifyToken, authController.dashboard);
+router.route("/token/verify").get(authController.verifyToken);
 
 module.exports = router;
