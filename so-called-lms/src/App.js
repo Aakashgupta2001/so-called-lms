@@ -1,11 +1,8 @@
-
+import React from "react";
+import Login from "./Components/Login";
 
 function App() {
-  return (
-    <>
-      <h1>hello</h1>
-    </>
-  );
+  return <Login></Login>;
 }
 
 export default App;
