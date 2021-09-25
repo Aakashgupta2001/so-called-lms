@@ -17,6 +17,10 @@ mongoose.connect(
 
 app.use(express.json());
 
+app.use("/", (req, res) => {
+  res.send("<h1>hello</h1>");
+});
+
 port = 5000;
 app.listen(port, () => {
   console.log("app is running at port " + port);
