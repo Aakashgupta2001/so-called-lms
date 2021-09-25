@@ -14,9 +14,7 @@ const Home = (props) => {
   return (
     <React.Fragment>
       <Sidebar />
-      <div className={classes.home}>
-        <Table />
-      </div>
+      <div className={classes.home}></div>
     </React.Fragment>
   );
 };
