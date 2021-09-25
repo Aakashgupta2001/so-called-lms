@@ -50,3 +50,8 @@ exports.login = async (req, res, next) => {
     return res.send(err);
   }
 };
+
+exports.dashboard = (req, res, next) => {
+  console.log(req.user);
+  res.send(req.user);
+};

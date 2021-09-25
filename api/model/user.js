@@ -24,6 +24,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: "Batch is required",
   },
+  attendence: {
+    totalClasses: String,
+    classesAttended: String,
+  },
   roles: {
     type: String,
     default: "user",
