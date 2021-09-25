@@ -5,6 +5,12 @@
   padding: 2rem;
 }
 
+.cardPos {
+  position: absolute;
+  margin-top: 100px;
+  min-height: 30vh;
+}
+
 .control {
   margin: 1rem 0;
   display: flex;
