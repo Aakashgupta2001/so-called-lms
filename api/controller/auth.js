@@ -35,18 +35,22 @@ exports.login = async (req, res, next) => {
     if (!result) {
       return res.send("Incorrect password");
     }
-    let token = jwt.sign({ name: user.name, role: user.roles, _id: user._id, email: user.email }, process.env.ACCESS_SECRET_TOKEN, {
+    let token = await jwt.sign({ name: user.name, role: user.roles, _id: user._id, email: user.email }, process.env.ACCESS_SECRET_TOKEN, {
       expiresIn: "24h",
     });
-
-    return res.send({
+    console.log(token);
+    console.log(user);
+    const response = {
       _id: user._id,
       name: user.name,
       email: user.email,
-      displayName: displayName,
+      displayName: user.displayName,
       Authorization: token,
-    });
+    };
+    console.log(response);
+    return res.status(202).send(response);
   } catch (err) {
+    console.log(err);
     return res.send(err);
   }
 };
