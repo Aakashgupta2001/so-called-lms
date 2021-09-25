@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 require("./routes").default(app);
 dotenv.config();
+const cors = require("cors");
 
 mongoose.connect(
   process.env.MONGO_URL,
@@ -16,6 +17,7 @@ mongoose.connect(
 );
 
 app.use(express.json());
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("<h1>hello</h1>");
