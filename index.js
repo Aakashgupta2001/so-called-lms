@@ -22,6 +22,6 @@ app.get("/", (req, res) => {
 });
 
 port = 5000;
-app.listen(process.env.PORN || port, () => {
+app.listen(process.env.PORT || port, () => {
   console.log("app is running at port " + port);
 });
