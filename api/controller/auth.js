@@ -15,7 +15,7 @@ exports.verifyToken = async (req, res, next) => {
     //if can verify the token, set req.user and pass to next middleware
     const decoded = jwt.verify(token, process.env.ACCESS_SECRET_TOKEN);
     req.user = decoded;
-    return res.status(202).send("correct Token");
+    return res.status(202).send(req.user);
   } catch (err) {
     return res.send({ error: err });
   }
