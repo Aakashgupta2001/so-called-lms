@@ -9,7 +9,6 @@ import Sidebar from "./Dashboard/Sidebar";
 function App() {
   const ctx = useContext(AuthContext);
   return (
-
     <Router>
       <MainHeader />
          <Sidebar/>
