@@ -38,6 +38,7 @@
 
 .row .tittle {
   flex-direction: 70%;
+  color: white;
 }
 
 .SidebarList .row #active {

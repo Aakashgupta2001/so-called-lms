@@ -70,4 +70,15 @@ export const tableData = {
       link: "https://classroom.google.com/u/1/c/MjYyNTA2MjI2MjI1",
     },
   ],
+  QAndAHeadings: ["Question", "Answer"],
+  QAndATableContents: [
+    {
+      meetName: "What is IP?",
+      time: "IP stands for Internet-Programming",
+    },
+    {
+      meetName: "What is Dwm?",
+      time: "The acronym of DWM is Data Warehouse Management",
+    },
+  ],
 };

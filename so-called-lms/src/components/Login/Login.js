@@ -5,7 +5,7 @@ import Button from "../UI/Button/Button";
 import AuthContext from "../../store/auth-context";
 import Input from "../UI/Input/Input";
 import classes from "./Login.module.css";
-import SignUp from "../signUp/SignUp";
+import SignUp from "../SignUp/SignUp";
 
 const emailReducer = (state, action) => {
   if (action.type === "USER_INPUT") {

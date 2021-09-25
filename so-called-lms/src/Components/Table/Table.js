@@ -1,78 +1,35 @@
 import React from "react";
 import classes from "./table.module.css";
 
-const Table = () => {
+const Table = (props) => {
+  console.log("table");
   return (
     <div className={classes.table}>
+      
       <table width="100%" rules="none">
         <thead>
           <tr>
-            <th colSpan="8" align="center">
-              MEETING NOTIFICATIONS
+            <th colSpan={props.tableheaders.length} align="center">
+              {props.tableHeading}
             </th>
           </tr>
           <tr>
-            <th>Sr No</th>
-            <th>Meeting Name</th>
-            <th>Teacher Name</th>
-            <th>Batch</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Remark</th>
-            <th>Meeting Link</th>
+            {props.tableheaders.map((header) => {
+              return <th>{header}</th>;
+            })}
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Head 1</td>
-            <td>Head 2</td>
-            <td>Head 3</td>
-            <td>Head 1</td>
-            <td>Head 2</td>
-            <td>Head 3</td>
-            <td>Head 1</td>
-            <td>Head 1</td>
-          </tr>
-          <tr>
-            <td>Head 1</td>
-            <td>Head 2</td>
-            <td>Head 3</td>
-            <td>Head 1</td>
-            <td>Head 2</td>
-            <td>Head 3</td>
-            <td>Head 1</td>
-            <td>Head 1</td>
-          </tr>
-          <tr>
-            <td>Head 1</td>
-            <td>Head 2</td>
-            <td>Head 3</td>
-            <td>Head 1</td>
-            <td>Head 2</td>
-            <td>Head 3</td>
-            <td>Head 1</td>
-            <td>Head 1</td>
-          </tr>
-          <tr>
-            <td>Head 1</td>
-            <td>Head 2</td>
-            <td>Head 3</td>
-            <td>Head 1</td>
-            <td>Head 2</td>
-            <td>Head 3</td>
-            <td>Head 1</td>
-            <td>Head 1</td>
-          </tr>
-          <tr>
-            <td>Head 1</td>
-            <td>Head 2</td>
-            <td>Head 3</td>
-            <td>Head 1</td>
-            <td>Head 2</td>
-            <td>Head 3</td>
-            <td>Head 1</td>
-            <td>Head 1</td>
-          </tr>
+          {props.tablecontent.map((rows) => {
+            console.log(rows);
+            return (
+              <tr>
+                <td>{rows.meetName}</td>
+                <td>{rows.time}</td>
+                {rows.link ? <td><a href={rows.link}>Click Here</a></td> : null}
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>
