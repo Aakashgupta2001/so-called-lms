@@ -21,3 +21,31 @@ exports.signup = async (req, res, next) => {
     return res.send(err);
   }
 };
+
+exports.login = async (req, res, next) => {
+  if (!req.body.email || req.body.email == "") {
+    return res.send("Please enter email");
+  }
+  try {
+    const user = await authService.findOne({ email: req.body.email.toLowerCase() });
+    if (!user) {
+      return res.send("User not found");
+    }
+    const result = await bcrypt.compare(req.body.password, user.password);
+    if (!result) {
+      return res.send("Incorrect password");
+    }
+    let token = jwt.sign({ name: user.name, role: user.roles, _id: user._id, email: user.email }, process.env.ACCESS_SECRET_TOKEN, {
+      expiresIn: "24h",
+    });
+
+    return res.send({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      Authorization: token,
+    });
+  } catch (err) {
+    return res.send(err);
+  }
+};

@@ -1,7 +1,7 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
 
-//////////////////////////////
+////////////////////////////////////////////
 const authRoute = require("./api/routes/user");
 
 module.exports.default = (app) => {
