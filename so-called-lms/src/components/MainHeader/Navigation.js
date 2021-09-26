@@ -18,14 +18,14 @@ const Navigation = (props) => {
       })
       .then((response) => {
         console.log("user = ", response);
-        setUser(response.data);
+        setUser(response.data.name);
       });
   }, []);
 
   return (
     <nav className={classes.nav}>
       <ul>
-        {ctx.isLoggedIn && <li> Hello, {user.name}</li>}
+        {ctx.isLoggedIn && <li> Hello, {user}</li>}
         {ctx.isLoggedIn && (
           <li>
             <button onClick={ctx.onLogout}>Logout</button>
