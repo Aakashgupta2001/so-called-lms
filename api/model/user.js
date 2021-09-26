@@ -18,11 +18,9 @@ const userSchema = new mongoose.Schema({
   phone: String,
   displayName: {
     type: String,
-    required: `Display Name is required`,
   },
   batch: {
     type: String,
-    required: "Batch is required",
   },
   attendence: {
     totalClasses: String,
