@@ -13,14 +13,11 @@ export const AuthContextProvider = (props) => {
   useEffect(() => {
     if (localStorage.getItem("Authorization")) {
       axios
-        .get(
-          "https://so-called-lms-final.herokuapp.com/api/v1/auth/token/verify",
-          {
-            headers: {
-              authorization: localStorage.getItem("Authorization"),
-            },
-          }
-        )
+        .get("https://so-called-lms-final.herokuapp.com/api/v1/auth/token/verify", {
+          headers: {
+            authorization: localStorage.getItem("Authorization"),
+          },
+        })
         .then((response) => {
           if (response.status === 202) {
             setIsLoggedIn(true);
@@ -37,8 +34,8 @@ export const AuthContextProvider = (props) => {
     // But it's just a dummy/ demo anyways
     var axios = require("axios");
     var data = JSON.stringify({
-      email: "abcd@gmail.com",
-      password: "1234abcd",
+      email: email,
+      password: password,
     });
 
     var config = {
@@ -53,8 +50,12 @@ export const AuthContextProvider = (props) => {
     axios(config)
       .then(function (response) {
         console.log(JSON.stringify(response.data));
-        localStorage.setItem("Authorization", response.data.Authorization);
-        setIsLoggedIn(true);
+        if (response.status == 202) {
+          localStorage.setItem("Authorization", response.data.Authorization);
+          setIsLoggedIn(true);
+        } else {
+          alert("invalid credentials");
+        }
       })
       .catch(function (error) {
         console.log(error);

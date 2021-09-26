@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  useReducer,
-  useContext,
-  useRef,
-} from "react";
+import React, { useState, useEffect, useReducer, useContext, useRef } from "react";
 
 import Card from "../UI/Card/Card";
 import Button from "../UI/Button/Button";
@@ -27,10 +21,10 @@ const emailReducer = (state, action) => {
 
 const passwordReducer = (state, action) => {
   if (action.type === "USER_INPUT") {
-    return { value: action.val, isValid: action.val.trim().length > 6 };
+    return { value: action.val, isValid: action.val.trim().length > 4 };
   }
   if (action.type === "INPUT_BLUR") {
-    return { value: state.value, isValid: state.value.trim().length > 6 };
+    return { value: state.value, isValid: state.value.trim().length > 4 };
   }
   return { value: "", isValid: false };
 };
@@ -117,32 +111,10 @@ const Login = (props) => {
     if (!displaySignUp) {
       return (
         <form onSubmit={submitHandler}>
-          <Input
-            ref={emailInputRef}
-            id="email"
-            label="E-Mail"
-            type="email"
-            isValid={emailIsValid}
-            value={emailState.value}
-            onChange={emailChangeHandler}
-            onBlur={validateEmailHandler}
-          />
-          <Input
-            ref={passwordInputRef}
-            id="password"
-            label="Password"
-            type="password"
-            isValid={passwordIsValid}
-            value={passwordState.value}
-            onChange={passwordChangeHandler}
-            onBlur={validatePasswordHandler}
-          />
+          <Input ref={emailInputRef} id="email" label="E-Mail" type="email" isValid={emailIsValid} value={emailState.value} onChange={emailChangeHandler} onBlur={validateEmailHandler} />
+          <Input ref={passwordInputRef} id="password" label="Password" type="password" isValid={passwordIsValid} value={passwordState.value} onChange={passwordChangeHandler} onBlur={validatePasswordHandler} />
           <div className={classes.actions}>
-            <Button
-              type="submit"
-              className={classes.btn}
-              onClick={loginHandler}
-            >
+            <Button type="submit" className={classes.btn} onClick={loginHandler}>
               Login
             </Button>
             {/* <Button type="button" className={classes.btn} onClick={signUpHandler}>
@@ -159,7 +131,10 @@ const Login = (props) => {
   const displayCOntroller = () => {
     console.log(displaySignUp);
     setDisplaySignUp(!displaySignUp);
+    !displaySignUp ? setButtonText("login") : setButtonText("signup");
   };
+
+  const [buttonText, setButtonText] = useState("signup");
 
   return (
     <div className="cardPos">
@@ -173,7 +148,7 @@ const Login = (props) => {
           </a>
         </Switch>
       </Router> */}
-        <button onClick={displayCOntroller}>Click Here</button>
+        <button onClick={displayCOntroller}>{buttonText}</button>
       </Card>
     </div>
   );
