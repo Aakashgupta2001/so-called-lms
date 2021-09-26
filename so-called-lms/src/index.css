@@ -5,6 +5,9 @@
 html {
   font-family: sans-serif;
   background: #fff;
+  background-image: url("./resources/back.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 body {

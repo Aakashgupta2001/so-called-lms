@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useReducer, useContext, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useReducer,
+  useContext,
+  useRef,
+} from "react";
 import classes from "./SignUp.module.css";
 import axios from "axios";
 
@@ -46,7 +52,12 @@ const SignUp = () => {
               <label htmlFor="name">Name</label>
             </td>
             <td>
-              <input type="text" id="name" value={name} onChange={nameHandler}></input>
+              <input
+                type="text"
+                id="name"
+                value={name}
+                onChange={nameHandler}
+              ></input>
             </td>
           </tr>
           <tr>
@@ -54,7 +65,12 @@ const SignUp = () => {
               <label htmlFor="email">Email</label>
             </td>
             <td>
-              <input type="email" id="email" value={email} onChange={emailHandler}></input>
+              <input
+                type="email"
+                id="email"
+                value={email}
+                onChange={emailHandler}
+              ></input>
             </td>
           </tr>
           <tr>
@@ -62,12 +78,17 @@ const SignUp = () => {
               <label htmlFor="password">Password</label>
             </td>
             <td>
-              <input type="password" id="password" value={password} onChange={passwordHandler}></input>
+              <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={passwordHandler}
+              ></input>
             </td>
           </tr>
         </table>
-        <div className="buttonStyle">
-          <button>Submit</button>
+        <div className={classes.actions}>
+          <button className={classes.buttonStyle}>Submit</button>
         </div>
       </form>
     </div>
