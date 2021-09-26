@@ -35,7 +35,7 @@
 
 .control input:focus {
   outline: none;
-  border-color: #4f005f;
+  border-color: #e5e5e5;
   background: #f6dbfc;
 }
 
@@ -46,6 +46,20 @@
 
 .actions {
   text-align: center;
+}
+
+.btn {
+  border-color: #e5e5e5;
+  background: #fca311;
+  padding: 1rem;
+  border-radius: 20%;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.btn:hover {
+  border-color: #e5e5e5;
+  background: #e28d03;
 }
 
 @media (min-width: 768px) {

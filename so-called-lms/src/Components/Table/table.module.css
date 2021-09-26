@@ -10,7 +10,7 @@
 }
 
 .table thead tr {
-  background-color: #009879;
+  background-color: #fca311;
   color: #ffffff;
   text-align: center;
 }
@@ -24,7 +24,7 @@
 }
 
 .table tbody tr {
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #fff;
   text-align: center;
 }
 
@@ -32,11 +32,15 @@
   background-color: #f3f3f3;
 }
 
+.table tbody tr:nth-of-type(odd) {
+  background-color: #fff;
+}
+
 .table tbody tr:last-of-type {
-  border-bottom: 2px solid #009879;
+  border-bottom: 2px solid #fca311;
 }
 
 .table tbody tr.active-row {
   font-weight: bold;
-  color: #009879;
+  color: #fca311;
 }

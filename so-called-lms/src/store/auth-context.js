@@ -13,11 +13,14 @@ export const AuthContextProvider = (props) => {
   useEffect(() => {
     if (localStorage.getItem("Authorization")) {
       axios
-        .get("https://so-called-lms-final.herokuapp.com/api/v1/auth/token/verify", {
-          headers: {
-            authorization: localStorage.getItem("Authorization"),
-          },
-        })
+        .get(
+          "https://so-called-lms-final.herokuapp.com/api/v1/auth/token/verify",
+          {
+            headers: {
+              authorization: localStorage.getItem("Authorization"),
+            },
+          }
+        )
         .then((response) => {
           if (response.status === 202) {
             setIsLoggedIn(true);
@@ -71,7 +74,9 @@ export const AuthContextProvider = (props) => {
 
   const logoutHandler = () => {
     localStorage.removeItem("Authorization");
+
     setIsLoggedIn(false);
+    window.location.href = "/";
   };
 
   return (

@@ -6,7 +6,7 @@
 .side-bar {
   height: 100vh;
   width: 255px;
-  background-color: #314051;
+  background-color: #14213d;
   position: fixed;
   top: 5rem;
 }
@@ -26,19 +26,21 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
   color: white;
 }
 
 .SidebarList .row:hover {
-  background-color: teal;
+  background-color: #222;
   cursor: pointer;
   color: whitesmoke;
 }
 
 .row .tittle {
   flex-direction: 70%;
-  color: white;
+  color: #fff;
+  text-decoration: none;
 }
 
 .SidebarList .row #active {
