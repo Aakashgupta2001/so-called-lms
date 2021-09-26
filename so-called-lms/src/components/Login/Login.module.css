@@ -1,14 +1,9 @@
 .login {
   width: 90%;
   max-width: 40rem;
-  margin: 2rem auto;
+  margin-top: 20vh !important;
+  margin: auto;
   padding: 2rem;
-}
-
-.cardPos {
-  position: absolute;
-  margin-top: 100px;
-  min-height: 30vh;
 }
 
 .control {
