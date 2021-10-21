@@ -1,16 +1,8 @@
-import React, { useContext } from "react";
-
-import Card from "../UI/Card/Card";
-import Button from "../UI/Button/Button";
+import React from "react";
 import classes from "./Home.module.css";
-import AuthContext from "../../store/auth-context";
 import Sidebar from "../../Dashboard/Sidebar";
 
-import Table from "../Table/Table";
-
-const Home = (props) => {
-  const authCtx = useContext(AuthContext);
-
+const Home = () => {
   return (
     <React.Fragment>
       <Sidebar />

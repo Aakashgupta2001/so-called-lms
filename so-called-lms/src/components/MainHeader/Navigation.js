@@ -7,15 +7,18 @@ const Navigation = (props) => {
   const ctx = useContext(AuthContext);
   const token = localStorage.getItem("Authorization");
   console.log(token);
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState("");
   useEffect(() => {
     console.log("navigation is loaded");
     axios
-      .get("https://so-called-lms-final.herokuapp.com/api/v1/auth/token/verify", {
-        headers: {
-          Authorization: token,
-        },
-      })
+      .get(
+        "https://so-called-lms-final.herokuapp.com/api/v1/auth/token/verify",
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      )
       .then((response) => {
         console.log("user = ", response);
         setUser(response.data.name);

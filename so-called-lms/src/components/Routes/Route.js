@@ -7,7 +7,7 @@ const Route = () => {
     <Router history={history}>
       <Switch>
         {!ctx.isLoggedIn && <Route path="/" exact component={Login} />}
-        {ctx.isLoggedIn && <Route path="/home" component={Home} />}
+        {ctx.isLoggedIn && <Route path="/" component={Home} />}
       </Switch>
     </Router>
   );

@@ -5,7 +5,6 @@ const Table = (props) => {
   console.log("table");
   return (
     <div className={classes.table}>
-      
       <table width="100%" rules="none">
         <thead>
           <tr>
@@ -26,7 +25,13 @@ const Table = (props) => {
               <tr>
                 <td>{rows.meetName}</td>
                 <td>{rows.time}</td>
-                {rows.link ? <td><a href={rows.link}>Click Here</a></td> : null}
+                {rows.link ? (
+                  <td>
+                    <a href={rows.link} target="_blank">
+                      Click Here
+                    </a>
+                  </td>
+                ) : null}
               </tr>
             );
           })}
