@@ -33,8 +33,6 @@ export const AuthContextProvider = (props) => {
   }, []);
 
   const loginHandler = (email, password) => {
-    // We should of course check email and password
-    // But it's just a dummy/ demo anyways
     var axios = require("axios");
     var data = JSON.stringify({
       email: email,
