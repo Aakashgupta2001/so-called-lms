@@ -32,7 +32,10 @@ const SignUp = () => {
       name: name,
     };
     axios
-      .post("https://so-called-lms.herokuapp.com/api/v1/auth/signup", body)
+      .post(
+        "https://so-called-lms-final.herokuapp.com/api/v1/auth/signup",
+        body
+      )
       .then((response) => {
         console.log(response);
         alert("signup successfull");
